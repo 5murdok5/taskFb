@@ -34,3 +34,28 @@ Currently, two official plugins are available:
 # install config eslint
 
 - pnpm i -d stylelint-config-idiomatic-order stylelint-config-idiomatic-order
+
+# BASE DE CONTEXTO REACT JS
+
+`
+import { useContext } from "react";
+import { createContext } from "react";
+
+const AuthContext = createContext();
+
+export const UseAuth = () => {
+const ctx = useContext(AuthContext);
+if (!ctx) {
+throw new Error("authContext debe ser usado dentro de AuthProvider");
+}
+return ctx;
+};
+
+export function AuthProvider({ children }) {
+const extData = {};
+
+return (
+<AuthContext.Provider value={extData}>{children}</AuthContext.Provider>
+);
+}
+`
